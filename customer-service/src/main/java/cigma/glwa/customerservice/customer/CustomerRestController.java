@@ -2,6 +2,9 @@ package cigma.glwa.customerservice.customer;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerRestController {
@@ -12,7 +15,7 @@ public class CustomerRestController {
         this.service = service;
     }
 
-    @GetMapping
+    @PostMapping
     public CustomerResponse addCustomer(@RequestBody Customer customer) {
         try {
             return service.addCustomer(customer);
@@ -27,6 +30,15 @@ public class CustomerRestController {
             return service.getCustomer(id);
         } catch (Exception e) {
             return new Error("get customer",e.getMessage());
+        }
+    }
+
+    @GetMapping
+    public List<Customer> getAll(@RequestBody Customer customer) {
+        try {
+            return service.findAllCustomers();
+        } catch (Exception e) {
+            return new ArrayList<Customer>();
         }
     }
 }
