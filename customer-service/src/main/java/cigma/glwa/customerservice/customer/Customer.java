@@ -12,7 +12,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-public class Customer {
+public class Customer implements CustomerResponse {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
     private String name ;

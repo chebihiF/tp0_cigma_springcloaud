@@ -21,21 +21,22 @@ public class CustomerService implements ICustomerService{
 
     @Override
     public Customer updateCustomer(Customer customer) throws Exception {
-        return null;
+        return customerRepository.save(customer);
     }
 
     @Override
     public Customer deleteCustomer(Customer customer) throws Exception {
-        return null;
+        customerRepository.delete(customer);
+        return customer;
     }
 
     @Override
     public Customer getCustomer(Long id) throws Exception {
-        return null;
+        return customerRepository.findById(id).get();
     }
 
     @Override
     public List<Customer> findAllCustomers() throws Exception {
-        return null;
+        return customerRepository.findAll();
     }
 }
